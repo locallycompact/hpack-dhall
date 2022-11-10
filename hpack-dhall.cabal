@@ -268,10 +268,6 @@ executable dhall-hpack-yaml
 test-suite golden
   type: exitcode-stdio-1.0
   main-is: Golden.hs
-  other-modules:
-      Hpack.Dhall
-      Hpack.Fields
-      Paths_hpack_dhall
   hs-source-dirs:
       library
       test-suite-golden/src
@@ -288,6 +284,7 @@ test-suite golden
     , directory
     , filepath
     , hpack ==0.35.*
+    , hpack-dhall
     , megaparsec >=9.2
     , microlens
     , prettyprinter
