@@ -11,7 +11,7 @@ import Options
     ( parsePkgFile, parseNumericVersion, parseVersion
     , parseForce, parseQuiet
     )
-import qualified Hpack as H (hpack, version, getOptions, setDecode)
+import qualified Hpack as H (hpack, version, getOptions, setDecode, optionsToStdout)
 import Hpack.Dhall (fileToJson)
 
 data Command = NumericVersion | Version | Run Options
@@ -63,6 +63,6 @@ main = do
                     ]
             case opts of
                 Just (verbose, options) ->
-                    H.hpack verbose (H.setDecode fileToJson options)
+                    H.hpack verbose (H.setDecode fileToJson options { H.optionsToStdout = True })
                 Nothing ->
                     return ()
